@@ -1,6 +1,6 @@
 {
   "name": "@dreesq/mamba",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Fast, express compatible http web server using uWebSockets.js",
   "main": "index.js",
   "scripts": {
