@@ -9,7 +9,8 @@ const test = async (req, res, next) => {
 };
 
 app.get('/:x', test, async (req, res) => {
-    res.end('X A');
+    const {x} = req.params;
+    res.redirect(`/view/${x}`);
 });
 
 app.post('/', async (req, res) => {
