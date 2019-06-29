@@ -8,18 +8,10 @@ const test = async (req, res, next) => {
     next();
 };
 
-app.get('/:x', test, async (req, res) => {
-    const {x} = req.params;
-    res.redirect(`/view/${x}`);
-});
-
-app.post('/', async (req, res) => {
-    res.json(req.body);
-});
-
 app.use((req, res, next, error) => {
     console.log(error);
     res.end('X');
 });
 
-app.listen(8080, () => console.log('listening on port 8080'));
+app.get('/', (req, res) => res.end('Done'));
+app.listen(8080, () => console.log('o/: listening on port 8080'));

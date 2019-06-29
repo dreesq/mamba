@@ -27,4 +27,4 @@ exports.create = create = (opts = {}) => {
  * @type {(function(*=): *)|*}
  */
 
-module.exports = create;
+exports = module.exports = create;
