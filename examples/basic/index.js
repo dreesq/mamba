@@ -8,7 +8,7 @@ const test = async (req, res, next) => {
     next();
 };
 
-app.get('/:x', async (req, res) => {
+app.get('/:x', test, async (req, res) => {
     res.end('XXX A');
 });
 

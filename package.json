@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/dreesq/mamba#readme",
   "dependencies": {
+    "cookie": "^0.4.0",
+    "querystring": "^0.2.0",
     "uWebSockets.js": "github:uNetworking/uWebSockets.js#binaries"
   }
 }
