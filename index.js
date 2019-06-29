@@ -7,7 +7,17 @@ const core = require('./lib/core');
  */
 
 exports.create = create = (opts = {}) => {
-    const app = uws.App();
+    let app;
+
+    if (opts.key && opts.cert) {
+        app = uws.SSLApp({
+            key_file_name: opts.key,
+            cert_file_name: opts.cert
+        });
+    } else {
+        app = uws.App();
+    }
+
     core.init(app);
     return app;
 };
