@@ -3,13 +3,17 @@ const mamba = require('../../index');
 const app = mamba();
 let i = 0;
 
-const testMiddleware = async (req, res, next) => {
+const test = async (req, res, next) => {
     ++i;
     next();
 };
 
-app.get('/', testMiddleware, testMiddleware, testMiddleware, async (req, res) => {
-    res.end('Done');
+app.get('/:x', async (req, res) => {
+    res.end('XXX A');
+});
+
+app.post('/', async (req, res) => {
+    res.json(req.body);
 });
 
 app.use((req, res, next, error) => {
