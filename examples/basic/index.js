@@ -9,7 +9,7 @@ const test = async (req, res, next) => {
 };
 
 app.get('/:x', test, async (req, res) => {
-    res.end('XXX A');
+    res.end('X A');
 });
 
 app.post('/', async (req, res) => {
