@@ -1,0 +1,22 @@
+{
+  "name": "@dreesq/mamba",
+  "version": "1.0.0",
+  "description": "Fast, express compatible http web server using uWebSockets.js",
+  "main": "index.js",
+  "scripts": {
+    "example": "nodemon examples/basic"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dreesq/mamba.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dreesq/mamba/issues"
+  },
+  "homepage": "https://github.com/dreesq/mamba#readme",
+  "dependencies": {
+    "uWebSockets.js": "github:uNetworking/uWebSockets.js#v15.11.0"
+  }
+}
