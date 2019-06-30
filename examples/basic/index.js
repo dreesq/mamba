@@ -14,4 +14,10 @@ app.use((req, res, next, error) => {
 });
 
 app.get('/', (req, res) => res.end('Done'));
+
+app.post('/', (req, res) => {
+    console.log(req.files);
+    res.json(req.body);
+});
+
 app.listen(8080, () => console.log('o/: listening on port 8080'));
