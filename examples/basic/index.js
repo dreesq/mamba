@@ -1,6 +1,14 @@
 const mamba = require('../../index');
 
-const app = mamba();
+const app = mamba({
+    busboy: {
+        limits: {
+            fileSize: 1,
+            files: 2,
+        }
+    }
+});
+
 let i = 0;
 
 const test = async (req, res, next) => {
@@ -15,9 +23,14 @@ app.use((req, res, next, error) => {
 
 app.get('/', (req, res) => res.end('Done'));
 
+app.get('/download', (req, res) => {
+    res.download('./test.html');
+});
+
 app.post('/', (req, res) => {
     console.log(req.files);
     res.json(req.body);
 });
 
 app.listen(8080, () => console.log('o/: listening on port 8080'));
+
