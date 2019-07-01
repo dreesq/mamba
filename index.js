@@ -1,5 +1,6 @@
 const uws = require('uWebSockets.js');
 const core = require('./lib/core');
+const socket = require('./lib/socket');
 
 /**
  * Create app helper
@@ -20,6 +21,7 @@ exports.create = create = (config = {}) => {
 
     app.config = config;
     core.init(app);
+    socket.init(app);
     return app;
 };
 

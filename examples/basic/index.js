@@ -1,6 +1,7 @@
 const mamba = require('../../index');
 
 const app = mamba({
+    socket: true,
     busboy: {
         limits: {
             fileSize: 1,
