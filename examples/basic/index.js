@@ -33,5 +33,17 @@ app.post('/', (req, res) => {
     res.json(req.body);
 });
 
+app.io.on('connection', s => {
+    console.log('connected!');
+
+    s.emit('hello', 'world!');
+
+    s.on('disconnect', () => {
+        console.log('Disconnected!');
+    });
+
+    s.on('ping', () => s.emit('ping', 'pong'));
+});
+
 app.listen(8080, () => console.log('o/: listening on port 8080'));
 
