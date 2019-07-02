@@ -1,5 +1,6 @@
 const mamba = require('../../index');
 const next = require('next');
+const path = require('path');
 const n = next({
     dev: true,
     dir: './client'
@@ -7,17 +8,18 @@ const n = next({
 
 const app = mamba();
 
+const toPath = (req, directory) => path.normalize(req.url.replace('/' + directory, ''));
+
 (async () => {
     await n.prepare();
 
     app.get('/_next/*', (req, res) => {
-        let path = req.url.replace('/_next', '');
-        return res.sendFile(`./client/.next/${path}`);
+
+        return res.sendFile(`./client/.next/${toPath(req, '_next')}`);
     });
 
     app.get('/static/*', (req, res) => {
-        let path = req.url.replace('/static', '');
-        return res.sendFile(`./client/static/${path}`);
+        return res.sendFile(`./client/static/${toPath(req, 'static')}`);
     });
 
     app.get('/*', (req, res) => {
