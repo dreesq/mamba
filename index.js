@@ -1,15 +1,27 @@
 const uws = require('uWebSockets.js');
 const core = require('./lib/core');
 const socket = require('./lib/socket');
+const path = require('path');
+
+/**
+ * Instance object
+ */
+
+let app;
+
+/**
+ * Default export
+ * @type {(function(*=): *)|*}
+ */
+
+exports = module.exports = create;
 
 /**
  * Create app helper
  * @type {function(): *}
  */
 
-exports.create = create = (config = {}) => {
-    let app;
-
+function create(config) {
     if (config.key && config.cert) {
         app = uws.SSLApp({
             key_file_name: opts.key,
@@ -26,8 +38,31 @@ exports.create = create = (config = {}) => {
 };
 
 /**
- * Default export
- * @type {(function(*=): *)|*}
+ * Static middleware
+ * @param directory
+ * @returns {Function}
  */
 
-exports = module.exports = create;
+exports.static = (directory = '') => {
+    const toPath = (req, directory) => {
+        let result = path.normalize(req.url.replace(`/${directory.replace('./', '')}`, ''));
+        return result;
+    };
+
+    return {
+        path(path) {
+            return `${path}/*`;
+        },
+        handler(req, res, next) {
+            let method = req.method;
+
+            if (method !== 'get' && method !== 'head') {
+                res.end();
+                next(true);
+            }
+
+            res.sendFile(`${directory}/${toPath(req, directory)}`);
+            next(true);
+        }
+    }
+};

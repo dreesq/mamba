@@ -22,16 +22,7 @@ app.use((req, res, next, error) => {
     res.end('X');
 });
 
-app.get('/', (req, res) => res.end('Done'));
-
-app.get('/download', (req, res) => {
-    res.download('./test.html');
-});
-
-app.post('/', (req, res) => {
-    console.log(req.files);
-    res.json(req.body);
-});
+app.use('/static', mamba.static('./static'));
 
 app.io.on('connection', s => {
     console.log('connected!');

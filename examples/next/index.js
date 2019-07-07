@@ -14,7 +14,6 @@ const toPath = (req, directory) => path.normalize(req.url.replace('/' + director
     await n.prepare();
 
     app.get('/_next/*', (req, res) => {
-
         return res.sendFile(`./client/.next/${toPath(req, '_next')}`);
     });
 
