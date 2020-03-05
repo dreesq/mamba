@@ -31,6 +31,7 @@ function create(config) {
         app = uws.App();
     }
 
+    app.__MAMBA__ = true;
     app.config = config;
     core.init(app);
     socket.init(app);
