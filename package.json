@@ -22,7 +22,7 @@
     "cookie": "^0.4.0",
     "eventemitter3": "^4.0.0",
     "fs-extra": "^8.1.0",
-    "mime-types": "^2.1.24",
+    "mime-types": "^2.1.26",
     "querystring": "^0.2.0",
     "uWebSockets.js": "github:uNetworking/uWebSockets.js#binaries"
   }
